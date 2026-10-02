@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dracon LLC | Marketing de afiliados, IA y vídeo para ecommerce</title>
-<meta name="description" content="Dracon LLC es una empresa de marketing. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo para marcas que venden online.">
+<title>Dracon LLC | Affiliate, AI Marketing & Video for Ecommerce</title>
+<meta name="description" content="Dracon LLC is a marketing company. Affiliate marketing, AI marketing for ecommerce and video editing for brands that sell online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@ main,footer{position:relative;z-index:1}
 .solid{background:var(--bg)}
 
 /* Header */
-header{position:fixed;inset:0 0 auto 0;z-index:10;height:76px;display:flex;align-items:center;justify-content:space-between;padding-inline:var(--pad);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header{position:fixed;inset:0 0 auto 0;z-index:10;height:76px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding-inline:var(--pad);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 header.stuck{background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
 .brand{display:flex;align-items:center;gap:12px}
 .brand svg{width:34px;height:34px}
@@ -41,16 +41,22 @@ header.stuck{background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backd
 .brand span{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.34em;color:var(--dim);margin-top:3px}
 nav{display:flex;gap:28px;font-size:15px;color:rgba(255,255,255,.85)}
 nav a:hover{color:#fff}
-.btn{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#000;font-weight:500;font-size:14px;padding:15px 20px;transition:opacity .2s}
+.right{display:flex;align-items:center;gap:clamp(12px,2.4vw,28px)}
+.lang{display:flex;align-items:center;gap:6px}
+.lang button{all:unset;cursor:pointer;padding:8px 4px;color:var(--faint);border-bottom:1px solid transparent}
+.lang button:hover{color:#fff}
+.lang button.on{color:#fff;border-color:#fff}
+.lang button:focus-visible{outline:1px solid #fff;outline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#000;font-weight:500;font-size:14px;padding:15px 20px;white-space:nowrap;transition:opacity .2s}
 .btn:hover{opacity:.85}
 @media (max-width:760px){nav{display:none}header{height:64px}.btn{padding:12px 14px;font-size:13px}}
+@media (max-width:440px){.btn .arrow{display:none}.brand svg{width:28px;height:28px}.brand{gap:8px}.brand b{font-size:13px;letter-spacing:.22em}}
 
 /* Hero */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:80px;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:100% 25%,25% 100%;
   -webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
-.hero{background-color:transparent}
 h1,.h2{text-transform:uppercase;letter-spacing:-.04em;line-height:.92;font-weight:200}
 h1{font-size:clamp(34px,9vw,132px)}
 h1 strong,.h2 strong{font-weight:800;display:block}
@@ -121,11 +127,14 @@ section.block{padding-block:clamp(90px,14vw,180px);border-top:1px solid var(--li
 .form label{display:grid;gap:8px}
 .form input,.form textarea{font:inherit;font-size:16px;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.28);padding:14px 16px;border-radius:0;resize:vertical}
 .form input:focus,.form textarea:focus{outline:none;border-color:#fff}
+.form .hp{position:absolute;left:-9999px}
 .start{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:stretch;border:1px solid rgba(255,255,255,.5);font-weight:500;font-size:17px;width:100%}
 .start:focus-visible{outline:1px solid #fff;outline-offset:3px}
+.start[disabled]{opacity:.5;cursor:default}
 .start span{flex:1;padding:22px 24px}
 .start i{display:grid;place-items:center;width:68px;background:#fff;color:#000;transition:width .25s}
-.start:hover i{width:88px}
+.start:hover:not([disabled]) i{width:88px}
+.status{min-height:1.6em;margin:0 !important;color:#fff !important;font-size:15px}
 @media (max-width:860px){.cta{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--line)}
 .cols{display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr}
@@ -144,147 +153,234 @@ footer{border-top:1px solid var(--line)}
 </head>
 <body>
 
-<!-- Liquid chrome background -->
 <canvas class="liquid" aria-hidden="true"></canvas>
 
 <header id="top">
-  <a class="brand" href="#top" aria-label="Dracon LLC, inicio">
+  <a class="brand" href="#top" aria-label="Dracon LLC">
     <svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round">
       <path d="M20 3 36 20 20 37 4 20Z"/><path d="M20 11 29 20 20 29 11 20Z"/><path d="M20 3v8M36 20h-7M20 37v-8M4 20h7"/>
     </svg>
     <div><b>DRACON</b><span>LLC</span></div>
   </a>
   <nav>
-    <a href="#services">Servicios</a>
-    <a href="#approach">Método</a>
-    <a href="#contact">Contacto</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#approach" data-i18n="nav.approach">Approach</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
-  <a class="btn" href="#contact">Empezar proyecto
-    <svg class="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg>
-  </a>
+  <div class="right">
+    <div class="lang mono" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button><span>/</span><button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <a class="btn" href="#contact"><span data-i18n="btn.start">Start Project</span>
+      <svg class="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg>
+    </a>
+  </div>
 </header>
 
 <main>
   <section class="hero wrap">
-    <h1>Diseñamos <strong>crecimiento.</strong></h1>
-    <p class="mono">Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo. Creamos, gestionamos y escalamos los canales que hay detrás de las ventas de una marca.</p>
-    <a class="ghost mono" href="#services">Ver servicios
+    <h1 data-i18n="hero.h1">We engineer <strong>growth.</strong></h1>
+    <p class="mono" data-i18n="hero.p">Affiliate marketing, AI marketing for ecommerce and video editing. We build, run and scale the channels behind a brand’s revenue.</p>
+    <a class="ghost mono" href="#services"><span data-i18n="hero.cta">Explore services</span>
       <svg class="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg>
     </a>
   </section>
 
   <section class="manifesto wrap" id="manifesto">
     <div class="pin">
-      <div class="stages mono"><span>Manifiesto</span><span class="rule"></span>
-        <i data-s="0">Sistema</i><i data-s="1">Medible</i><i data-s="2">Repetible</i><i data-s="3">Ventas</i>
+      <div class="stages mono"><span data-i18n="man.label">Manifesto</span><span class="rule"></span>
+        <i data-s="0" data-i18n="man.s0">System</i><i data-s="1" data-i18n="man.s1">Measurable</i><i data-s="2" data-i18n="man.s2">Repeatable</i><i data-s="3" data-i18n="man.s3">Revenue</i>
       </div>
-      <h2>El crecimiento exige <em data-s="0">sistema.</em> Convertimos tráfico, contenido y datos dispersos en el motor <em data-s="1">medible</em> y <em data-s="2">repetible</em> que impulsa <em data-s="3">las ventas de un ecommerce.</em></h2>
+      <h2 data-i18n="man.h2">Growth requires <em data-s="0">system.</em> We turn scattered traffic, content and data into the <em data-s="1">measurable,</em> <em data-s="2">repeatable</em> engine that powers <em data-s="3">ecommerce revenue.</em></h2>
     </div>
   </section>
 
   <section class="block solid wrap" id="approach">
-    <div class="mono">01 / Cómo trabajamos</div>
-    <h2 class="h2 plain" style="margin-top:14px">El ciclo de crecimiento.</h2>
+    <div class="mono" data-i18n="loop.kicker">01 / How we work</div>
+    <h2 class="h2 plain" style="margin-top:14px" data-i18n="loop.h2">The Growth Loop.</h2>
     <div class="loop">
       <div class="steps">
-        <button class="on" data-n="0"><span class="mono">01</span><b>Atraer</b><p>Afiliados y creadores traen compradores cualificados. Cada colaborador se mide desde el primer clic.</p></button>
-        <button data-n="1"><span class="mono">02</span><b>Crear</b><p>Creatividades asistidas por IA y vídeo editado convierten un producto en una biblioteca entera de contenido.</p></button>
-        <button data-n="2"><span class="mono">03</span><b>Convertir</b><p>Textos, páginas y ofertas ajustados a la tienda. El tráfico llega donde está listo para comprar.</p></button>
-        <button data-n="3"><span class="mono">04</span><b>Optimizar</b><p>Leemos los números, mantenemos lo que vende y cortamos lo que no. Y el ciclo vuelve a empezar.</p></button>
+        <button class="on" data-n="0"><span class="mono">01</span><b data-i18n="s0.b">Attract</b><p data-i18n="s0.p">Affiliates and creators bring qualified buyers. Every partner is tracked from first click.</p></button>
+        <button data-n="1"><span class="mono">02</span><b data-i18n="s1.b">Create</b><p data-i18n="s1.p">AI-assisted creatives and edited video turn one product into a full library of content.</p></button>
+        <button data-n="2"><span class="mono">03</span><b data-i18n="s2.b">Convert</b><p data-i18n="s2.p">Copy, pages and offers tuned for the store. Traffic lands where it is ready to buy.</p></button>
+        <button data-n="3"><span class="mono">04</span><b data-i18n="s3.b">Optimize</b><p data-i18n="s3.p">We read the numbers, keep what sells and cut what doesn’t. Then the loop runs again.</p></button>
       </div>
       <div class="diagram">
-        <div class="mono cap">Captación</div>
+        <div class="mono cap" data-i18n="d.top">Acquisition</div>
         <div class="row">
-          <div class="node on" data-n="0">Afiliados<small>Creadores / Redes</small></div>
-          <div class="node" data-n="1">Motor de contenido<small>IA / Vídeo</small></div>
-          <div class="node" data-n="2">Tienda<small>Páginas / Ofertas</small></div>
-          <div class="node" data-n="3">Datos de rendimiento<small>Seguimiento / Informes</small></div>
+          <div class="node on" data-n="0" data-i18n="d.n0">Affiliate Partners<small>Creators / Networks</small></div>
+          <div class="node" data-n="1" data-i18n="d.n1">Content Engine<small>AI / Video</small></div>
+          <div class="node" data-n="2" data-i18n="d.n2">Storefront<small>Pages / Offers</small></div>
+          <div class="node" data-n="3" data-i18n="d.n3">Performance Data<small>Tracking / Reports</small></div>
         </div>
-        <div class="mono cap">Ventas</div>
+        <div class="mono cap" data-i18n="d.bottom">Revenue</div>
       </div>
     </div>
   </section>
 
   <section class="block solid wrap" id="services">
-    <div class="mono kicker">02 / Servicios</div>
-    <h2 class="h2">Hecho para <strong>rendir.</strong></h2>
+    <div class="mono kicker" data-i18n="cap.kicker">02 / Capabilities</div>
+    <h2 class="h2" data-i18n="cap.h2">Built for <strong>performance.</strong></h2>
     <div class="rail">
       <article class="card">
-        <div class="top"><span class="mono">01</span><span class="mono">Programas de afiliados · Creadores · Seguimiento · Pagos</span></div>
-        <h3>Marketing de afiliados</h3>
-        <p>Captamos, gestionamos y pagamos a los colaboradores que venden tu producto. Pagas por resultados, no por promesas.</p>
+        <div class="top"><span class="mono">01</span><span class="mono" data-i18n="c0.tags">Partner programs · Creators · Tracking · Payouts</span></div>
+        <h3 data-i18n="c0.h">Affiliate Marketing</h3>
+        <p data-i18n="c0.p">We recruit, manage and pay the partners who sell your product. You pay for results, not for promises.</p>
         <span class="num">01</span>
       </article>
       <article class="card">
-        <div class="top"><span class="mono">02</span><span class="mono">Creatividades con IA · Fichas de producto · Automatización · Personalización</span></div>
-        <h3>Marketing con IA para ecommerce</h3>
-        <p>IA aplicada al día a día de una tienda: creatividades, contenido de producto, emails y campañas producidos más rápido y probados más a menudo.</p>
+        <div class="top"><span class="mono">02</span><span class="mono" data-i18n="c1.tags">AI creatives · Product copy · Automation · Personalization</span></div>
+        <h3 data-i18n="c1.h">AI Marketing for Ecommerce</h3>
+        <p data-i18n="c1.p">AI applied to the daily work of a store: creatives, product content, emails and campaigns produced faster and tested more often.</p>
         <span class="num">02</span>
       </article>
       <article class="card">
-        <div class="top"><span class="mono">03</span><span class="mono">Formato corto · Anuncios · UGC · Vídeo de producto</span></div>
-        <h3>Edición de vídeo</h3>
-        <p>Edición para anuncios, reels y fichas de producto. Entra el material en bruto y sale un vídeo listo para publicar, montado para cada plataforma.</p>
+        <div class="top"><span class="mono">03</span><span class="mono" data-i18n="c2.tags">Short-form · Ads · UGC · Product video</span></div>
+        <h3 data-i18n="c2.h">Video Editing</h3>
+        <p data-i18n="c2.p">Editing for ads, reels and product pages. Raw footage in, ready-to-publish video out, cut for each platform.</p>
         <span class="num">03</span>
       </article>
     </div>
   </section>
 
   <section class="cta wrap" id="contact">
-    <h2 class="h2">Trae el producto. <strong>Hagámoslo crecer.</strong></h2>
+    <h2 class="h2" data-i18n="cta.h2">Bring the product. <strong>Let’s grow.</strong></h2>
     <div>
-      <p>Afiliados, marketing con IA y vídeo. Cuéntanos qué tiene que vender mejor.</p>
+      <p data-i18n="cta.p">Affiliates, AI marketing and video. Tell us what needs to sell better.</p>
       <form class="form" id="contact-form">
-        <label><span class="mono">Nombre</span><input name="name" autocomplete="name" required></label>
-        <label><span class="mono">Mensaje</span><textarea name="message" rows="4" required></textarea></label>
-        <button class="start" type="submit"><span>Enviar mensaje</span>
+        <label><span class="mono" data-i18n="f.name">Name</span><input name="name" autocomplete="name" required></label>
+        <label><span class="mono" data-i18n="f.email">Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span class="mono" data-i18n="f.message">Message</span><textarea name="message" rows="4" required></textarea></label>
+        <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="start" type="submit"><span data-i18n="f.send">Send message</span>
           <i><svg class="arrow" style="width:15px;height:15px" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i>
         </button>
+        <p class="status" id="form-status" role="status"></p>
       </form>
-      <p class="mono" style="margin-top:18px"><a id="mail-line"></a></p>
+      <p class="mono" style="margin-top:6px"><a id="mail-line"></a></p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="cols">
-    <div><h4 class="mono">01 / Servicios</h4><ul>
-      <li><a href="#services">Marketing de afiliados ↗</a></li>
-      <li><a href="#services">Marketing con IA ↗</a></li>
-      <li><a href="#services">Edición de vídeo ↗</a></li>
+    <div><h4 class="mono" data-i18n="ft.services">01 / Services</h4><ul>
+      <li><a href="#services" data-i18n="ft.s0">Affiliate Marketing ↗</a></li>
+      <li><a href="#services" data-i18n="ft.s1">AI Marketing ↗</a></li>
+      <li><a href="#services" data-i18n="ft.s2">Video Editing ↗</a></li>
     </ul></div>
-    <div><h4 class="mono">02 / Empresa</h4><ul>
-      <li><a href="#approach">Método ↗</a></li>
-      <li><a href="#contact">Contacto ↗</a></li>
+    <div><h4 class="mono" data-i18n="ft.company">02 / Company</h4><ul>
+      <li><a href="#approach" data-i18n="ft.approach">Approach ↗</a></li>
+      <li><a href="#contact" data-i18n="ft.contact">Contact ↗</a></li>
     </ul></div>
     <div><h4 class="mono">03 / Dracon LLC</h4>
       <div class="brand">
         <svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"><path d="M20 3 36 20 20 37 4 20Z"/><path d="M20 11 29 20 20 29 11 20Z"/><path d="M20 3v8M36 20h-7M20 37v-8M4 20h7"/></svg>
         <div><b>DRACON</b><span>LLC</span></div>
       </div>
-      <p class="tag">Ingeniería de <b>crecimiento.</b></p>
-      <p class="about">Empresa de marketing para marcas que venden online. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo.</p>
+      <p class="tag" data-i18n="ft.tag">Growth <b>Engineers.</b></p>
+      <p class="about" data-i18n="ft.about">A marketing company for brands that sell online. Affiliate marketing, AI marketing for ecommerce and video editing.</p>
     </div>
-    <div><h4 class="mono">04 / Registro</h4><ul>
+    <div><h4 class="mono" data-i18n="ft.record">04 / Record</h4><ul>
       <li><a>© <span id="yr">2026</span> Dracon LLC</a></li>
-      <li><a href="#top">Arriba ↗</a></li>
+      <li><a href="#top" data-i18n="ft.top">Top ↗</a></li>
     </ul></div>
   </div>
 </footer>
 
 <script>
-// The contact form opens the visitor's mail app with the message addressed here.
 const CONTACT_EMAIL = 'gglepxle@gmail.com';
 
+// English lives in the markup; Spanish is swapped in from this table by data-i18n key.
+const ES = {
+  'nav.services': 'Servicios', 'nav.approach': 'Método', 'nav.contact': 'Contacto',
+  'btn.start': 'Empezar proyecto',
+  'hero.h1': 'Diseñamos <strong>crecimiento.</strong>',
+  'hero.p': 'Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo. Creamos, gestionamos y escalamos los canales que hay detrás de las ventas de una marca.',
+  'hero.cta': 'Ver servicios',
+  'man.label': 'Manifiesto', 'man.s0': 'Sistema', 'man.s1': 'Medible', 'man.s2': 'Repetible', 'man.s3': 'Ventas',
+  'man.h2': 'El crecimiento exige <em data-s="0">sistema.</em> Convertimos tráfico, contenido y datos dispersos en el motor <em data-s="1">medible</em> y <em data-s="2">repetible</em> que impulsa <em data-s="3">las ventas de un ecommerce.</em>',
+  'loop.kicker': '01 / Cómo trabajamos', 'loop.h2': 'El ciclo de crecimiento.',
+  's0.b': 'Atraer', 's0.p': 'Afiliados y creadores traen compradores cualificados. Cada colaborador se mide desde el primer clic.',
+  's1.b': 'Crear', 's1.p': 'Creatividades asistidas por IA y vídeo editado convierten un producto en una biblioteca entera de contenido.',
+  's2.b': 'Convertir', 's2.p': 'Textos, páginas y ofertas ajustados a la tienda. El tráfico llega donde está listo para comprar.',
+  's3.b': 'Optimizar', 's3.p': 'Leemos los números, mantenemos lo que vende y cortamos lo que no. Y el ciclo vuelve a empezar.',
+  'd.top': 'Captación', 'd.bottom': 'Ventas',
+  'd.n0': 'Afiliados<small>Creadores / Redes</small>',
+  'd.n1': 'Motor de contenido<small>IA / Vídeo</small>',
+  'd.n2': 'Tienda<small>Páginas / Ofertas</small>',
+  'd.n3': 'Datos de rendimiento<small>Seguimiento / Informes</small>',
+  'cap.kicker': '02 / Servicios', 'cap.h2': 'Hecho para <strong>rendir.</strong>',
+  'c0.tags': 'Programas de afiliados · Creadores · Seguimiento · Pagos',
+  'c0.h': 'Marketing de afiliados',
+  'c0.p': 'Captamos, gestionamos y pagamos a los colaboradores que venden tu producto. Pagas por resultados, no por promesas.',
+  'c1.tags': 'Creatividades con IA · Fichas de producto · Automatización · Personalización',
+  'c1.h': 'Marketing con IA para ecommerce',
+  'c1.p': 'IA aplicada al día a día de una tienda: creatividades, contenido de producto, emails y campañas producidos más rápido y probados más a menudo.',
+  'c2.tags': 'Formato corto · Anuncios · UGC · Vídeo de producto',
+  'c2.h': 'Edición de vídeo',
+  'c2.p': 'Edición para anuncios, reels y fichas de producto. Entra el material en bruto y sale un vídeo listo para publicar, montado para cada plataforma.',
+  'cta.h2': 'Trae el producto. <strong>Hagámoslo crecer.</strong>',
+  'cta.p': 'Afiliados, marketing con IA y vídeo. Cuéntanos qué tiene que vender mejor.',
+  'f.name': 'Nombre', 'f.email': 'Email', 'f.message': 'Mensaje', 'f.send': 'Enviar mensaje',
+  'ft.services': '01 / Servicios', 'ft.s0': 'Marketing de afiliados ↗', 'ft.s1': 'Marketing con IA ↗', 'ft.s2': 'Edición de vídeo ↗',
+  'ft.company': '02 / Empresa', 'ft.approach': 'Método ↗', 'ft.contact': 'Contacto ↗',
+  'ft.tag': 'Ingeniería de <b>crecimiento.</b>',
+  'ft.about': 'Empresa de marketing para marcas que venden online. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo.',
+  'ft.record': '04 / Registro', 'ft.top': 'Arriba ↗',
+};
+const META = {
+  en: { title: document.title, desc: document.querySelector('meta[name=description]').content },
+  es: { title: 'Dracon LLC | Marketing de afiliados, IA y vídeo para ecommerce',
+        desc: 'Dracon LLC es una empresa de marketing. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo para marcas que venden online.' },
+};
+const MSG = {
+  en: { sending: 'Sending…', sent: 'Message sent. We’ll get back to you soon.', error: 'Couldn’t send it. Please email us directly.' },
+  es: { sending: 'Enviando…', sent: 'Mensaje enviado. Te responderemos pronto.', error: 'No se pudo enviar. Escríbenos directamente al email.' },
+};
+
+const i18nEls = [...document.querySelectorAll('[data-i18n]')];
+const EN = Object.fromEntries(i18nEls.map(el => [el.dataset.i18n, el.innerHTML]));
+let lang = 'en';
+function setLang(next) {
+  lang = next === 'es' ? 'es' : 'en';
+  const dict = lang === 'es' ? ES : EN;
+  i18nEls.forEach(el => { el.innerHTML = dict[el.dataset.i18n]; });
+  document.documentElement.lang = lang;
+  document.title = META[lang].title;
+  document.querySelector('meta[name=description]').content = META[lang].desc;
+  document.querySelectorAll('.lang button').forEach(b => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('on', on); b.setAttribute('aria-pressed', on);
+  });
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  onScroll();
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+// Contact form, delivered to CONTACT_EMAIL through FormSubmit.
 const mailLine = document.getElementById('mail-line');
 mailLine.textContent = CONTACT_EMAIL;
 mailLine.href = 'mailto:' + CONTACT_EMAIL;
-document.getElementById('contact-form').addEventListener('submit', e => {
+const form = document.getElementById('contact-form'), statusEl = document.getElementById('form-status');
+form.addEventListener('submit', async e => {
   e.preventDefault();
-  const f = new FormData(e.target);
-  location.href = 'mailto:' + CONTACT_EMAIL +
-    '?subject=' + encodeURIComponent('Proyecto — ' + f.get('name')) +
-    '&body=' + encodeURIComponent(f.get('message'));
+  const data = Object.fromEntries(new FormData(form));
+  const send = form.querySelector('.start');
+  send.disabled = true; statusEl.textContent = MSG[lang].sending;
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ ...data, _subject: 'Dracon LLC — ' + data.name, _template: 'table' }),
+    });
+    const out = await res.json();
+    if (!res.ok || String(out.success) !== 'true') throw new Error(out.message);
+    form.reset(); statusEl.textContent = MSG[lang].sent;
+  } catch (err) {
+    statusEl.textContent = MSG[lang].error;
+  }
+  send.disabled = false;
 });
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -320,13 +416,12 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
 const header = document.querySelector('header');
 const manifesto = document.getElementById('manifesto');
-const marks = manifesto.querySelectorAll('[data-s]');
 function onScroll() {
   header.classList.toggle('stuck', scrollY > 40);
   const r = manifesto.getBoundingClientRect();
   const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
   const stage = Math.min(3, Math.floor(p * 4));
-  marks.forEach(m => m.classList.toggle('on', r.top < innerHeight * .5 && +m.dataset.s <= stage));
+  manifesto.querySelectorAll('[data-s]').forEach(m => m.classList.toggle('on', r.top < innerHeight * .5 && +m.dataset.s <= stage));
 }
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
@@ -340,6 +435,12 @@ function pick(n) {
   el.addEventListener('mouseenter', () => pick(el.dataset.n));
   el.addEventListener('click', () => pick(el.dataset.n));
 });
+
+// English by default; ?lang=es or a previous choice switches to Spanish.
+let saved = null;
+try { saved = localStorage.getItem('lang'); } catch (e) {}
+const wanted = new URLSearchParams(location.search).get('lang') || saved;
+if (wanted === 'es') setLang('es');
 </script>
 </body>
 </html>
