@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dracon LLC | Marketing de afiliados, IA y vídeo para ecommerce</title>
+<meta name="description" content="Dracon LLC es una empresa de marketing. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo para marcas que venden online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;
+  --fg:#fff;
+  --dim:rgba(255,255,255,.58);
+  --faint:rgba(255,255,255,.32);
+  --line:rgba(255,255,255,.12);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --pad:clamp(16px,3.2vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.wrap{padding-inline:var(--pad)}
+.arrow{display:inline-block;width:11px;height:11px;flex:none}
+
+/* Liquid background */
+.liquid{position:fixed;inset:0;width:100%;height:100%;z-index:0;filter:blur(1.5px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+main,footer{position:relative;z-index:1}
+.solid{background:var(--bg)}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:10;height:76px;display:flex;align-items:center;justify-content:space-between;padding-inline:var(--pad);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.stuck{background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:34px;height:34px}
+.brand b{display:block;font-weight:600;letter-spacing:.3em;font-size:15px}
+.brand span{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.34em;color:var(--dim);margin-top:3px}
+nav{display:flex;gap:28px;font-size:15px;color:rgba(255,255,255,.85)}
+nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#000;font-weight:500;font-size:14px;padding:15px 20px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+@media (max-width:760px){nav{display:none}header{height:64px}.btn{padding:12px 14px;font-size:13px}}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:80px;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:100% 25%,25% 100%;
+  -webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.hero{background-color:transparent}
+h1,.h2{text-transform:uppercase;letter-spacing:-.04em;line-height:.92;font-weight:200}
+h1{font-size:clamp(34px,9vw,132px)}
+h1 strong,.h2 strong{font-weight:800;display:block}
+.hero p{max-width:560px;margin-top:clamp(28px,5vw,56px);font-size:14px;letter-spacing:.1em;line-height:1.6}
+.ghost{display:inline-flex;align-items:center;gap:22px;margin-top:44px;border:1px solid rgba(255,255,255,.28);padding:22px 32px;color:#fff;align-self:flex-start;transition:background .25s,color .25s}
+.ghost:hover{background:#fff;color:#000}
+
+/* Manifesto */
+.manifesto{height:240vh}
+.manifesto .pin{position:sticky;top:0;min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:36px}
+.stages{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.stages .rule{flex:1;min-width:40px;height:1px;background:var(--faint)}
+.stages i{font-style:normal;color:var(--faint);transition:color .4s}
+.stages i::before{content:"— ";letter-spacing:0}
+.stages i.on{color:#fff}
+.manifesto h2{font-size:clamp(28px,5.9vw,76px);text-transform:uppercase;font-weight:200;letter-spacing:-.025em;line-height:1.08;color:rgba(255,255,255,.72)}
+.manifesto h2 em{font-style:normal;font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3);transition:color .5s,-webkit-text-stroke-color .5s}
+.manifesto h2 em.on{color:#fff;-webkit-text-stroke-color:transparent}
+@media (max-width:760px){.stages .rule{display:none}.stages{gap:12px}}
+
+/* Sections */
+section.block{padding-block:clamp(90px,14vw,180px);border-top:1px solid var(--line)}
+.kicker{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.kicker::after{content:"";width:min(220px,30vw);height:1px;background:var(--line)}
+.h2{font-size:clamp(36px,6vw,72px)}
+.h2.plain{text-transform:none;font-weight:300;letter-spacing:-.025em;line-height:1.05}
+
+/* Loop */
+.loop{display:grid;grid-template-columns:minmax(240px,1fr) 2fr;gap:clamp(28px,5vw,64px);margin-top:56px;align-items:center}
+.steps{border-left:1px solid var(--line);padding-left:20px;display:grid;gap:6px}
+.steps button{all:unset;cursor:pointer;display:block;padding:8px 0;color:var(--dim)}
+.steps button b{font-weight:400;font-size:19px;margin-left:12px}
+.steps button p{display:none;font-size:16px;line-height:1.6;color:rgba(255,255,255,.8);margin-top:8px;max-width:300px}
+.steps button.on{color:#fff}
+.steps button.on b{font-weight:500}
+.steps button.on p{display:block}
+.steps button:focus-visible{outline:1px solid #fff;outline-offset:4px}
+.diagram{border:1px solid var(--line);background:rgba(255,255,255,.02);padding:clamp(20px,3vw,40px);display:grid;gap:26px}
+.diagram .row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+.diagram .row::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.node{position:relative;background:#000;border:1px solid var(--line);padding:18px 12px;text-align:center;font-size:13px;transition:border-color .3s,background .3s,transform .3s}
+.node small{display:block;margin-top:10px;font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+.node.on{border-color:#fff;background:#0d0d0d;transform:translateY(-4px)}
+.diagram .cap{text-align:center}
+@media (max-width:860px){.loop{grid-template-columns:1fr}.diagram .row{grid-template-columns:repeat(2,1fr)}.diagram .row::before{display:none}}
+
+/* Capabilities */
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.card{position:relative;border:1px solid rgba(255,255,255,.22);padding:clamp(24px,3vw,36px);min-height:340px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .3s,background .3s}
+.card:hover{border-color:#fff;background:rgba(255,255,255,.03)}
+.card .top{display:flex;justify-content:space-between;gap:16px}
+.card .top span:last-child{text-align:right;line-height:1.9;max-width:230px}
+.card h3{font-weight:300;font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;margin-top:auto;padding-top:56px}
+.card p{color:rgba(255,255,255,.8);line-height:1.6;margin-top:14px;max-width:340px}
+.card .num{position:absolute;right:24px;bottom:8px;font-size:96px;font-weight:200;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);letter-spacing:-.04em;pointer-events:none}
+@media (max-width:980px){
+  .rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .card{flex:0 0 min(84vw,420px);scroll-snap-align:center}
+}
+
+/* CTA + footer */
+.cta{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;padding-block:clamp(90px,12vw,150px)}
+.cta .h2{text-transform:none;font-weight:300;letter-spacing:-.03em;line-height:1.05;font-size:clamp(34px,5.4vw,64px)}
+.cta .h2 strong{font-weight:600}
+.cta p{color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:22px;max-width:340px}
+.form{display:grid;gap:18px;max-width:420px}
+.form label{display:grid;gap:8px}
+.form input,.form textarea{font:inherit;font-size:16px;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.28);padding:14px 16px;border-radius:0;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none;border-color:#fff}
+.start{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:stretch;border:1px solid rgba(255,255,255,.5);font-weight:500;font-size:17px;width:100%}
+.start:focus-visible{outline:1px solid #fff;outline-offset:3px}
+.start span{flex:1;padding:22px 24px}
+.start i{display:grid;place-items:center;width:68px;background:#fff;color:#000;transition:width .25s}
+.start:hover i{width:88px}
+@media (max-width:860px){.cta{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:1fr 1fr 1.6fr 1fr}
+.cols>div{padding:44px var(--pad) 56px;border-left:1px solid var(--line)}
+.cols>div:first-child{border-left:0}
+.cols h4{font:inherit;margin-bottom:26px}
+.cols ul{list-style:none;display:grid;gap:18px}
+.cols li a{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.cols li a:hover{color:#fff}
+.tag{font-size:22px;font-weight:300;letter-spacing:-.02em;margin:22px 0 14px}
+.tag b{font-weight:600}
+.cols p.about{color:var(--dim);line-height:1.65;max-width:300px}
+@media (max-width:860px){.cols{grid-template-columns:1fr 1fr}.cols>div{border-left:0;border-top:1px solid var(--line)}}
+@media (max-width:520px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Liquid chrome background -->
+<canvas class="liquid" aria-hidden="true"></canvas>
+
+<header id="top">
+  <a class="brand" href="#top" aria-label="Dracon LLC, inicio">
+    <svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M20 3 36 20 20 37 4 20Z"/><path d="M20 11 29 20 20 29 11 20Z"/><path d="M20 3v8M36 20h-7M20 37v-8M4 20h7"/>
+    </svg>
+    <div><b>DRACON</b><span>LLC</span></div>
+  </a>
+  <nav>
+    <a href="#services">Servicios</a>
+    <a href="#approach">Método</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+  <a class="btn" href="#contact">Empezar proyecto
+    <svg class="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg>
+  </a>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>Diseñamos <strong>crecimiento.</strong></h1>
+    <p class="mono">Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo. Creamos, gestionamos y escalamos los canales que hay detrás de las ventas de una marca.</p>
+    <a class="ghost mono" href="#services">Ver servicios
+      <svg class="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg>
+    </a>
+  </section>
+
+  <section class="manifesto wrap" id="manifesto">
+    <div class="pin">
+      <div class="stages mono"><span>Manifiesto</span><span class="rule"></span>
+        <i data-s="0">Sistema</i><i data-s="1">Medible</i><i data-s="2">Repetible</i><i data-s="3">Ventas</i>
+      </div>
+      <h2>El crecimiento exige <em data-s="0">sistema.</em> Convertimos tráfico, contenido y datos dispersos en el motor <em data-s="1">medible</em> y <em data-s="2">repetible</em> que impulsa <em data-s="3">las ventas de un ecommerce.</em></h2>
+    </div>
+  </section>
+
+  <section class="block solid wrap" id="approach">
+    <div class="mono">01 / Cómo trabajamos</div>
+    <h2 class="h2 plain" style="margin-top:14px">El ciclo de crecimiento.</h2>
+    <div class="loop">
+      <div class="steps">
+        <button class="on" data-n="0"><span class="mono">01</span><b>Atraer</b><p>Afiliados y creadores traen compradores cualificados. Cada colaborador se mide desde el primer clic.</p></button>
+        <button data-n="1"><span class="mono">02</span><b>Crear</b><p>Creatividades asistidas por IA y vídeo editado convierten un producto en una biblioteca entera de contenido.</p></button>
+        <button data-n="2"><span class="mono">03</span><b>Convertir</b><p>Textos, páginas y ofertas ajustados a la tienda. El tráfico llega donde está listo para comprar.</p></button>
+        <button data-n="3"><span class="mono">04</span><b>Optimizar</b><p>Leemos los números, mantenemos lo que vende y cortamos lo que no. Y el ciclo vuelve a empezar.</p></button>
+      </div>
+      <div class="diagram">
+        <div class="mono cap">Captación</div>
+        <div class="row">
+          <div class="node on" data-n="0">Afiliados<small>Creadores / Redes</small></div>
+          <div class="node" data-n="1">Motor de contenido<small>IA / Vídeo</small></div>
+          <div class="node" data-n="2">Tienda<small>Páginas / Ofertas</small></div>
+          <div class="node" data-n="3">Datos de rendimiento<small>Seguimiento / Informes</small></div>
+        </div>
+        <div class="mono cap">Ventas</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block solid wrap" id="services">
+    <div class="mono kicker">02 / Servicios</div>
+    <h2 class="h2">Hecho para <strong>rendir.</strong></h2>
+    <div class="rail">
+      <article class="card">
+        <div class="top"><span class="mono">01</span><span class="mono">Programas de afiliados · Creadores · Seguimiento · Pagos</span></div>
+        <h3>Marketing de afiliados</h3>
+        <p>Captamos, gestionamos y pagamos a los colaboradores que venden tu producto. Pagas por resultados, no por promesas.</p>
+        <span class="num">01</span>
+      </article>
+      <article class="card">
+        <div class="top"><span class="mono">02</span><span class="mono">Creatividades con IA · Fichas de producto · Automatización · Personalización</span></div>
+        <h3>Marketing con IA para ecommerce</h3>
+        <p>IA aplicada al día a día de una tienda: creatividades, contenido de producto, emails y campañas producidos más rápido y probados más a menudo.</p>
+        <span class="num">02</span>
+      </article>
+      <article class="card">
+        <div class="top"><span class="mono">03</span><span class="mono">Formato corto · Anuncios · UGC · Vídeo de producto</span></div>
+        <h3>Edición de vídeo</h3>
+        <p>Edición para anuncios, reels y fichas de producto. Entra el material en bruto y sale un vídeo listo para publicar, montado para cada plataforma.</p>
+        <span class="num">03</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta wrap" id="contact">
+    <h2 class="h2">Trae el producto. <strong>Hagámoslo crecer.</strong></h2>
+    <div>
+      <p>Afiliados, marketing con IA y vídeo. Cuéntanos qué tiene que vender mejor.</p>
+      <form class="form" id="contact-form">
+        <label><span class="mono">Nombre</span><input name="name" autocomplete="name" required></label>
+        <label><span class="mono">Mensaje</span><textarea name="message" rows="4" required></textarea></label>
+        <button class="start" type="submit"><span>Enviar mensaje</span>
+          <i><svg class="arrow" style="width:15px;height:15px" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i>
+        </button>
+      </form>
+      <p class="mono" style="margin-top:18px"><a id="mail-line"></a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cols">
+    <div><h4 class="mono">01 / Servicios</h4><ul>
+      <li><a href="#services">Marketing de afiliados ↗</a></li>
+      <li><a href="#services">Marketing con IA ↗</a></li>
+      <li><a href="#services">Edición de vídeo ↗</a></li>
+    </ul></div>
+    <div><h4 class="mono">02 / Empresa</h4><ul>
+      <li><a href="#approach">Método ↗</a></li>
+      <li><a href="#contact">Contacto ↗</a></li>
+    </ul></div>
+    <div><h4 class="mono">03 / Dracon LLC</h4>
+      <div class="brand">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"><path d="M20 3 36 20 20 37 4 20Z"/><path d="M20 11 29 20 20 29 11 20Z"/><path d="M20 3v8M36 20h-7M20 37v-8M4 20h7"/></svg>
+        <div><b>DRACON</b><span>LLC</span></div>
+      </div>
+      <p class="tag">Ingeniería de <b>crecimiento.</b></p>
+      <p class="about">Empresa de marketing para marcas que venden online. Marketing de afiliados, marketing con IA para ecommerce y edición de vídeo.</p>
+    </div>
+    <div><h4 class="mono">04 / Registro</h4><ul>
+      <li><a>© <span id="yr">2026</span> Dracon LLC</a></li>
+      <li><a href="#top">Arriba ↗</a></li>
+    </ul></div>
+  </div>
+</footer>
+
+<script>
+// The contact form opens the visitor's mail app with the message addressed here.
+const CONTACT_EMAIL = 'gglepxle@gmail.com';
+
+const mailLine = document.getElementById('mail-line');
+mailLine.textContent = CONTACT_EMAIL;
+mailLine.href = 'mailto:' + CONTACT_EMAIL;
+document.getElementById('contact-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  location.href = 'mailto:' + CONTACT_EMAIL +
+    '?subject=' + encodeURIComponent('Proyecto — ' + f.get('name')) +
+    '&body=' + encodeURIComponent(f.get('message'));
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Liquid background: domain-warped waves drawn at low resolution and scaled up.
+(function liquid() {
+  const c = document.querySelector('.liquid'), ctx = c.getContext('2d');
+  const W = 240, H = 240, img = ctx.createImageData(W, H), d = img.data;
+  c.width = W; c.height = H;
+  function draw(t) {
+    for (let j = 0, i = 0; j < H; j++) {
+      for (let k = 0; k < W; k++, i += 4) {
+        let x = k / W * 5, y = j / H * 5;
+        for (let n = 1; n < 4; n++) {
+          const nx = x + .55 / n * Math.sin(n * 2.1 * y + t + n * 1.7);
+          y += .55 / n * Math.cos(n * 1.9 * x - t * .8 + n);
+          x = nx;
+        }
+        const ridge = Math.pow(Math.abs(Math.sin((x + y) * 2.6)), 9);
+        const v = 4 + ridge * 62;
+        d[i] = v * .82; d[i + 1] = v * .92; d[i + 2] = v * 1.08; d[i + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  draw(0);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let last = 0;
+  (function loop(now) {
+    if (now - last > 50 && !document.hidden) { last = now; draw(now / 9000); }
+    requestAnimationFrame(loop);
+  })(0);
+})();
+
+const header = document.querySelector('header');
+const manifesto = document.getElementById('manifesto');
+const marks = manifesto.querySelectorAll('[data-s]');
+function onScroll() {
+  header.classList.toggle('stuck', scrollY > 40);
+  const r = manifesto.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+  const stage = Math.min(3, Math.floor(p * 4));
+  marks.forEach(m => m.classList.toggle('on', r.top < innerHeight * .5 && +m.dataset.s <= stage));
+}
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+const steps = document.querySelectorAll('.steps button'), nodes = document.querySelectorAll('.node');
+function pick(n) {
+  steps.forEach(s => s.classList.toggle('on', s.dataset.n === n));
+  nodes.forEach(s => s.classList.toggle('on', s.dataset.n === n));
+}
+[...steps, ...nodes].forEach(el => {
+  el.addEventListener('mouseenter', () => pick(el.dataset.n));
+  el.addEventListener('click', () => pick(el.dataset.n));
+});
+</script>
+</body>
+</html>
